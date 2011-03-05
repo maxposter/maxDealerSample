@@ -1,0 +1,39 @@
+/* Общие */
+h1 {
+    font-size:2.5em;
+}
+h3 {
+    margin:1em 0 0.5em;
+}
+
+/* Список автомобилей */
+.cars A, .cars A * {
+    text-decoration:none;
+    cursor:pointer;
+}
+.car {
+    padding:10px 0;
+    width:100%;
+    color:black;
+    border-top:1px dashed black;
+    position:relative;
+}
+.car IMG {
+    border:0;
+    float:left;
+    padding-right:10px;
+}
+.car H3 {
+    margin:0;
+}
+.car .price {
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+.car .price DIV {
+    width:140px;
+    padding:10px 10px 10px 0;
+    text-align:right;
+    font-size:20px;
+}
