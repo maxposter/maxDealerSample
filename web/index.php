@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="/css/blueprint/print.css" type="text/css" media="print" />
         <!--[if IE]><link rel="stylesheet" href="/css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
         <link rel="stylesheet" href="/css/usedcars.css" type="text/css" media="screen, projection" />
+        <?php echo $client->getJS(); ?>
     </head>
     <body>
         <div class="container">
