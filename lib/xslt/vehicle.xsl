@@ -95,7 +95,146 @@
         <div class="clear"></div>
     </xsl:template>
 
-    <xsl:template name="car_options"></xsl:template>
+    <xsl:template name="car_options">
+        <div class="car_options">
+            <h3>Комплектация</h3>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Антиблокировочная система (АБС)'" />
+                <xsl:with-param name="element" select="./abs" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Антипробуксовочная система'" />
+                <xsl:with-param name="element" select="./asr" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Система курсовой стабилизации'" />
+                <xsl:with-param name="element" select="./esp" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Парктроник'" />
+                <xsl:with-param name="element" select="./parktronic" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Подушки безопасности: '" />
+                <xsl:with-param name="element" select="./airbag" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Охранная система'" />
+                <xsl:with-param name="element" select="./alarm_system" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Центральный замок'" />
+                <xsl:with-param name="element" select="./central_lock" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Навигационная система'" />
+                <xsl:with-param name="element" select="./nav_system" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Легкосплавные диски'" />
+                <xsl:with-param name="element" select="./light_alloy_wheels" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Датчик дождя'" />
+                <xsl:with-param name="element" select="./sensors/rain" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Датчик света'" />
+                <xsl:with-param name="element" select="./sensors/light" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Омыватель фар'" />
+                <xsl:with-param name="element" select="./headlights/washer" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Ксеноновые фары'" />
+                <xsl:with-param name="element" select="./headlights/xenon" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Салон: '" />
+                <xsl:with-param name="element" select="./compartment" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Тонированные стекла'" />
+                <xsl:with-param name="element" select="./windows/tinted" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Люк'" />
+                <xsl:with-param name="element" select="./hatch" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Газобалонное оборудование'" />
+                <xsl:with-param name="element" select="./engine/gas_equipment" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Круиз-контроль'" />
+                <xsl:with-param name="element" select="./cruise_control" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Бортовой компьютер'" />
+                <xsl:with-param name="element" select="./trip_computer" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Усилитель рулевого управления: '" />
+                <xsl:with-param name="element" select="./steering_wheel/power" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Регулировка руля: '" />
+                <xsl:with-param name="element" select="./steering_wheel/adjustment" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Обогрев руля'" />
+                <xsl:with-param name="element" select="./steering_wheel/heater" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Электрозеркала'" />
+                <xsl:with-param name="element" select="./mirrors/power" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Обогрев зеркал'" />
+                <xsl:with-param name="element" select="./mirrors/defroster" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Электростеклоподъемники: '" />
+                <xsl:with-param name="element" select="./windows/power" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Обогрев сидений'" />
+                <xsl:with-param name="element" select="./seats/heater" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Регулировка сиденья водителя: '" />
+                <xsl:with-param name="element" select="./seats/driver_adjustment" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Электропривод сиденья пассажира'" />
+                <xsl:with-param name="element" select="./seats/passanger_adjustment" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Управление климатом: '" />
+                <xsl:with-param name="element" select="./climate_control" />
+            </xsl:call-template>
+            <xsl:call-template name="option">
+                <xsl:with-param name="label" select="'Стереосистема: '" />
+                <xsl:with-param name="element" select="./audio" />
+            </xsl:call-template>
+        </div>
+        <div class="clear"></div>
+    </xsl:template>
+
+    <xsl:template name="option">
+        <xsl:param name="label" />
+        <xsl:param name="element"/>
+        <xsl:if test="$element">
+            <div class="span-8">
+                <span>
+                    <xsl:value-of select="$label" />
+                </span>
+                <xsl:apply-templates select="$element" />
+            </div>
+        </xsl:if>
+    </xsl:template>
+
     <xsl:template match="photos"></xsl:template>
     <xsl:template match="description"></xsl:template>
     <xsl:template name="car_contact"></xsl:template>
