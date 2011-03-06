@@ -259,6 +259,30 @@
         </a>
     </xsl:template>
 
-    <xsl:template match="description"></xsl:template>
+    <xsl:template match="description">
+        <div id="car_description">
+            <h3>Дополнительная информация</h3>
+            <xsl:call-template name="break">
+                <xsl:with-param name="text" select="." />
+            </xsl:call-template>
+        </div>
+    </xsl:template>
+
+    <xsl:template name="break">
+        <xsl:param name="text" />
+        <xsl:choose>
+            <xsl:when test="contains($text,'&#xa;')">
+                <xsl:value-of select="substring-before($text, '&#xa;')"/>
+                <br/>
+                <xsl:call-template name="break">
+                    <xsl:with-param name="text" select="substring-after($text,'&#xa;')"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$text" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
     <xsl:template name="car_contact"></xsl:template>
 </xsl:stylesheet>
