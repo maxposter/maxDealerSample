@@ -2,7 +2,7 @@
     $projectDir = dirname(dirname(__FILE__));
     require_once($projectDir . '/lib/maxAPI/autoload.php');
 
-    $client = new maxCacheHtmlClient(array(
+    $client = new demoClient(array(
         // Код автосалона
         'dealer_id' => 5,
 
@@ -24,8 +24,7 @@
         'cached_html_themes' => array(),
     ));
 
-    // Явно задаем тип запрашиваемых данных
-    $client->setRequestThemeName('vehicles');
+    $client->setRequest();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
