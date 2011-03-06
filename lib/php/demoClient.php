@@ -38,4 +38,32 @@ class demoClient extends maxCacheHtmlClient
 
         return $this;
     }
+
+
+    /**
+     * Директивы по загрузке JS библиотек и их инициализации
+     *
+     * @return string
+     */
+    public function getJS()
+    {
+        $ret = '';
+        // Если в качестве темы запроса задан числовой идентификатор объявления
+        if (is_numeric($this->getRequestThemeName())) {
+            $ret = <<<EOD
+<script type="text/javascript" src="http://yandex.st/mootools/1.2.4/mootools.min.js"></script>
+<script type="text/javascript" src="/js/mootools-1.2-more.js"></script>
+<script type="text/javascript" src="/js/galery.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+window.addEvent('domready', function(){
+var galery = new Gallery();
+});
+//]]>
+</script>
+EOD;
+        }
+
+        return $ret;
+    }
 }
