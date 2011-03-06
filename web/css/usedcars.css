@@ -37,3 +37,18 @@ h3 {
     text-align:right;
     font-size:20px;
 }
+
+/* Описание автомобиля */
+.car_main div {
+    line-height:2;
+}
+.car_main div div {
+    font-weight:bold;
+}
+#thumbnails a {
+    float:left;
+    margin:10px 10px 0 0;
+}
+#thumbnails a.last {
+    margin:10px 0 0 0;
+}
