@@ -284,5 +284,30 @@
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template name="car_contact"></xsl:template>
+    <xsl:template name="car_contact">
+        <div id="car_contact">
+            <h3>Контакты</h3>
+            <xsl:if test="./inspection_place">
+                <div>
+                    <span>Место осмотра: </span>
+                    <xsl:value-of select="./inspection_place" />
+                </div>
+            </xsl:if>
+            <div>
+                <span>Телефон: </span>
+                <xsl:for-each select="./contact/phone">
+                    <xsl:if test="position() > 1">
+                        <xsl:text>, </xsl:text>
+                    </xsl:if>
+                    <xsl:value-of select="." />
+                </xsl:for-each>
+            </div>
+            <xsl:if test="./contact/name">
+                <div>
+                    <span>Менеджер: </span>
+                    <xsl:value-of select="./contact/name" />
+                </div>
+            </xsl:if>
+        </div>
+    </xsl:template>
 </xsl:stylesheet>
