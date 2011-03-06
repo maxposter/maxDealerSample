@@ -235,7 +235,30 @@
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="photos"></xsl:template>
+    <xsl:template match="photos">
+        <div class="photos">
+            <h3>Фотографии</h3>
+            <a name="photos"></a>
+            <div id="original">
+                <img src="{./photo[position() = 1]/original}" width="640" height="480"/>
+            </div>
+            <div id="thumbnails">
+                <xsl:apply-templates select="./photo" />
+            </div>
+        </div>
+        <div class="clear"></div>
+    </xsl:template>
+    <xsl:template match="photo">
+        <a href="/{/response/vehicle[1]/@vehicle_id}?photo={position()}#photos" class="thumbnail">
+            <xsl:if test="position() mod 5 = 0">
+                <xsl:attribute name="class">
+                    <xsl:text>last</xsl:text>
+                </xsl:attribute>
+            </xsl:if>
+            <img src="{./thumbnail}" width="120" height="90" />
+        </a>
+    </xsl:template>
+
     <xsl:template match="description"></xsl:template>
     <xsl:template name="car_contact"></xsl:template>
 </xsl:stylesheet>
