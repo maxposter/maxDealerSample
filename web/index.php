@@ -2,7 +2,7 @@
     $projectDir = dirname(dirname(__FILE__));
     require_once($projectDir . '/lib/maxAPI/autoload.php');
 
-    $client = new demoClient(array(
+    demoClient::setInitOptions(array(
         // Код автосалона
         'dealer_id' => 5,
 
@@ -24,6 +24,7 @@
         'cached_html_themes' => array(),
     ));
 
+    $client = demoClient::createInstance();
     $client->setRequest();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -40,8 +41,15 @@
     </head>
     <body>
         <div class="container">
-            <div class="span-16">
+            <div class="span-17">
                 <?php echo $client->getHtml(); ?>
+            </div>
+            <div class="prepend-1 span-6 last">
+                <?php
+                    $client = demoClient::createInstance();
+                    $client->setRequestThemeName('marks');
+                    echo $client->getHtml();
+                ?>
             </div>
         </div>
     </body>
