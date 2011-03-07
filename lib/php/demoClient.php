@@ -66,4 +66,21 @@ EOD;
 
         return $ret;
     }
+
+
+    /**
+     * Добавление параметров класаа
+     *
+     * @return array Параметры класса по умолчанию
+     */
+    protected function getDefaultOptions()
+    {
+        return array_merge(
+            parent::getDefaultOptions(),
+            array(
+                // Количество объявлений на странице со списком авто
+                'rows_by_page' => 10,
+            )
+        );
+    }
 }
