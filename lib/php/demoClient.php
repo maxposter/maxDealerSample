@@ -1,6 +1,10 @@
 <?php
 class demoClient extends maxCacheHtmlClient
 {
+    static private
+        // Параметры класса
+        $initOptions = array();
+
     // Параметры, не влияющие на запрос XML
     protected $xslParams = array();
 
@@ -178,5 +182,27 @@ EOD;
     protected function getHtmlCacheHashKey($_themeName)
     {
         return parent::getHtmlCacheHashKey($_themeName).$this->getRequestParamsAsString($this->xslParams);
+    }
+
+
+    /**
+     * Установка параметров класса
+     *
+     * @param array $_initOptions
+     */
+    static public function setInitOptions(array $_initOptions)
+    {
+        self::$initOptions = $_initOptions;
+    }
+
+
+    /**
+     * Создание нового экземпляра класса с установленными параметрами инициализации
+     *
+     * @return demoClient
+     */
+    static public function createInstance()
+    {
+        return new demoClient(self::$initOptions);
     }
 }
