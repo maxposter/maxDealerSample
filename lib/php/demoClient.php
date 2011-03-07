@@ -205,4 +205,21 @@ EOD;
     {
         return new demoClient(self::$initOptions);
     }
+
+
+    /**
+     * Установка заголовка ответа 404 или 500 в зависимости от типа ошибки
+     */
+    protected function setErrorHeader()
+    {
+        $errorCode = intval($this->xml->getElementsByTagName('error')->item(0)->getAttribute('error_id'));
+
+        if (!headers_sent()) {
+            if (in_array($errorCode, array(404, maxException::ERR_DOES_NOT_SET_REQUEST_THEME))) {
+                header("HTTP/1.0 404 Not Found");
+            } else {
+                header("HTTP/1.0 500 Internal Server Error");
+            }
+        }
+    }
 }
