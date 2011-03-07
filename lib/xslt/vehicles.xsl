@@ -24,7 +24,7 @@
             <xsl:choose>
                 <xsl:when test="$count > 0">
                     <h3>Количество автомобилей: <xsl:value-of select="$count" /></h3>
-                    <xsl:apply-templates select="/response/vehicles/*" />
+                    <xsl:apply-templates select="/response/vehicles/vehicle[position()>(($page - 1)*$rows) and ($page*$rows)>=position()]" />
                 </xsl:when>
                 <xsl:otherwise>
                     <p>Не найдено ни одного автомобиля</p>
