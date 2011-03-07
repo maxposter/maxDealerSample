@@ -123,6 +123,9 @@ EOD;
                     throw maxException::getException(maxException::ERR_404);
                 }
                 break;
+            case 'error':
+                $this->setErrorHeader();
+                break;
         }
     }
 
