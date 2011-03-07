@@ -1,6 +1,10 @@
 <?php
 class demoClient extends maxCacheHtmlClient
 {
+    // Параметры, не влияющие на запрос XML
+    protected $xslParams = array();
+
+
     /**
      * Удаление из URI GET-параметров запроса
      *
