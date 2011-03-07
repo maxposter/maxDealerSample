@@ -85,7 +85,7 @@ class demoClient extends maxCacheHtmlClient
     {
         $ret = '';
         // Если в качестве темы запроса задан числовой идентификатор объявления
-        if (is_numeric($this->getRequestThemeName())) {
+        if (is_numeric($this->getResponseThemeName())) {
             $ret = <<<EOD
 <script type="text/javascript" src="http://yandex.st/mootools/1.2.4/mootools.min.js"></script>
 <script type="text/javascript" src="/js/mootools-1.2-more.js"></script>
