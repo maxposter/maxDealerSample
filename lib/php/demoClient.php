@@ -26,6 +26,18 @@ class demoClient extends maxCacheHtmlClient
 
 
     /**
+     * Метод перекрыт для возвращения заголовков об ошибке
+     *
+     * @param maxException $_e Исключение
+     */
+    protected function setErrorXml(maxException $_e)
+    {
+        parent::setErrorXml($_e);
+        $this->setErrorHeader();
+    }
+
+
+    /**
      * Определение по URI темы запроса и парметров
      *
      * @return this
@@ -54,6 +66,10 @@ class demoClient extends maxCacheHtmlClient
         elseif (preg_match('/^\/([0-9]{1,6})$/', $requestURI, $params)) {
             // Устанавливаем тему запроса равную коду объявления
             $this->setRequestThemeName($params[1]);
+        }
+        // Иначе ошибка
+        else {
+            $this->setErrorXml(maxException::getException(maxException::ERR_404));
         }
 
         return $this;
