@@ -160,4 +160,18 @@ EOD;
 
         return $_xsl;
     }
+
+
+    /**
+     * Добавление к хэшу xsl-параметров, чтобы кэш страницы 1 отличался от кэша
+     * страницы No2 и кэш описния авто с активным фото No1 отличался от кэша
+     * с активным фото 2 при отключенном JS
+     *
+     * @param unknown_type $_themeName
+     * @return unknown
+     */
+    protected function getHtmlCacheHashKey($_themeName)
+    {
+        return parent::getHtmlCacheHashKey($_themeName).$this->getRequestParamsAsString($this->xslParams);
+    }
 }
