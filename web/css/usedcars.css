@@ -60,3 +60,17 @@ h3 {
 .pagination a {
     text-decoration: underline;
 }
+
+/* Форма поиска */
+#search_form div {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+#search_form select {
+    margin: 0;
+}
+div.error {
+    border:0;
+    background: white;
+    padding: 0 0 0 0;
+}
