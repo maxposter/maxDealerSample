@@ -74,3 +74,14 @@ div.error {
     background: white;
     padding: 0 0 0 0;
 }
+
+/* Марки и модели */
+ul.makes{
+    margin-left:0;
+}
+ul.makes * {
+    list-style-type:none;
+}
+.makes A {
+    color:black;
+}
