@@ -5,6 +5,9 @@
         doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
         encoding="utf-8" indent="yes" />
 
+    <!-- Подключение шаблона для отображения постраничной навигации -->
+    <xsl:include href="inc_pagination.xsl" />
+
     <!--
     Поскольку посчитать количество автомобилей необходимо для нескольких
     задач в шаблоне, сохраним результат расчета в переменной.
@@ -25,6 +28,8 @@
                 <xsl:when test="$count > 0">
                     <h3>Количество автомобилей: <xsl:value-of select="$count" /></h3>
                     <xsl:apply-templates select="/response/vehicles/vehicle[position()>(($page - 1)*$rows) and ($page*$rows)>=position()]" />
+                    <!-- Вывод ссылок для постраничной навигации-->
+                    <xsl:call-template name="Navigation" />
                 </xsl:when>
                 <xsl:otherwise>
                     <p>Не найдено ни одного автомобиля</p>
