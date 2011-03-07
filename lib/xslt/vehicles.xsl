@@ -5,6 +5,9 @@
         doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
         encoding="utf-8" indent="yes" />
 
+    <!-- Подключение шаблона для отображения формы поиска -->
+    <xsl:include href="inc_form.xsl" />
+
     <!-- Подключение шаблона для отображения постраничной навигации -->
     <xsl:include href="inc_pagination.xsl" />
 
@@ -17,6 +20,8 @@
     <xsl:template match="/">
         <!-- Правило для корневого элемента. Отсюда стартует преобразование. -->
         <h1>Автомобили в продаже</h1>
+        <!-- Форма поиска -->
+        <xsl:apply-templates select="/response/search_form" />
         <!-- Принудительно выводим только ноды, вложенные в vehicles -->
         <xsl:apply-templates select="/response/vehicles" />
     </xsl:template>
