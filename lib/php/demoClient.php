@@ -94,4 +94,26 @@ EOD;
             )
         );
     }
+
+
+    /**
+     * Метод перекрыт для валидации значений запроса в максимально ранний момент
+     */
+    protected function loadXml()
+    {
+        parent::loadXml();
+
+        // Валидация значений, используемых при XSLT-преобразовании ответа
+        switch ($this->getResponseThemeName()) {
+            case 'vehicles':
+                // Валидация номера страницы на максимальное значение
+                $vehicles = $this->xml->getElementsByTagName('vehicle');
+                $maxPage = ceil($vehicles->length/$this->getOption('rows_by_page'));
+                $maxPage = ($maxPage < 1) ? 1 : $maxPage;
+                if ($maxPage < $this->xslParams['page']) {
+                    throw maxException::getException(maxException::ERR_404);
+                }
+                break;
+        }
+    }
 }
