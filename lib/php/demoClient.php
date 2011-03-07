@@ -33,6 +33,13 @@ class demoClient extends maxCacheHtmlClient
         if (preg_match('/^\/$/', $requestURI)) {
             // Устанавливаем тему запроса vehicles
             $this->setRequestThemeName('vehicles');
+
+            // Получение номера страницы и валидация на минимальное значение
+            $this->xslParams['page'] = isset($_GET['page']) ? intval($_GET['page']) : 1;
+            if (1 > $this->xslParams['page']) {
+                // При обнаружении невалидного значения выбрасываем exception, до запроса XML
+                throw maxException::getException(maxException::ERR_404);
+            }
         }
         // Если описание авто
         elseif (preg_match('/^\/([0-9]{1,6})$/', $requestURI, $params)) {
