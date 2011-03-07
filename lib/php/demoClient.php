@@ -40,6 +40,11 @@ class demoClient extends maxCacheHtmlClient
                 // При обнаружении невалидного значения выбрасываем exception, до запроса XML
                 throw maxException::getException(maxException::ERR_404);
             }
+
+            // Получение данных из формы поиска автомобиля
+            if (isset($_GET['search']) && is_array($_GET['search'])) {
+                $this->setRequestParams(array('search' => $_GET['search'])); // Параметры фильтрации
+            }
         }
         // Если описание авто
         elseif (preg_match('/^\/([0-9]{1,6})$/', $requestURI, $params)) {
