@@ -116,4 +116,48 @@ EOD;
                 break;
         }
     }
+
+
+    /**
+     * Метод перекрыт для добавления параметров, используемых при XSL-преобразовании
+     *
+     * @param unknown_type $_xstlName
+     * @return unknown
+     */
+    protected function getXslDom($_xstlName)
+    {
+        $xsl = parent::getXslDom($_xstlName);
+        // Корневой элемент, в который добавляются переменные
+        $root = $xsl->getElementsByTagName('stylesheet')->item(0);
+        switch ($this->getResponseThemeName()) {
+            case 'vehicles':
+                // Добавление номера страницы и количество авто на странице
+                $xsl = $this->appendVariable($xsl, $root, 'page', $this->xslParams['page']);
+                $xsl = $this->appendVariable($xsl, $root, 'rows', $this->getOption('rows_by_page'));
+                break;
+        }
+
+        return $xsl;
+    }
+
+
+    /**
+     * Добавление переменной в XSLT шаблон
+     *
+     * @param DOMDocument $_xsl
+     * @param DOMNode $_root
+     * @param string $_name
+     * @param string $_value
+     * @return DOMDocument
+     */
+    protected function appendVariable(DOMDocument $_xsl, DOMNode $_root, $_name, $_value)
+    {
+        $newNode = $_xsl->createElementNS('http://www.w3.org/1999/XSL/Transform', 'xsl:variable', $_value);
+        $attr = $_xsl->createAttribute('name');
+        $attr->appendChild($_xsl->createTextNode($_name));
+        $newNode->appendChild($attr);
+        $_root->appendChild($newNode);
+
+        return $_xsl;
+    }
 }
